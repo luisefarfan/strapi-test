@@ -1,30 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiTextoTexto extends Struct.CollectionTypeSchema {
-  collectionName: 'textos';
-  info: {
-    singularName: 'texto';
-    pluralName: 'textos';
-    displayName: 'Texto';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    contenido: Schema.Attribute.RichText & Schema.Attribute.Required;
-    nombreInterno: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::texto.texto'>;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -510,6 +485,57 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiImagenImagen extends Struct.CollectionTypeSchema {
+  collectionName: 'imagens';
+  info: {
+    singularName: 'imagen';
+    pluralName: 'imagens';
+    displayName: 'Imagen';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombreInterno: Schema.Attribute.String;
+    archivo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::imagen.imagen'>;
+  };
+}
+
+export interface ApiTextoTexto extends Struct.CollectionTypeSchema {
+  collectionName: 'textos';
+  info: {
+    singularName: 'texto';
+    pluralName: 'textos';
+    displayName: 'Texto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contenido: Schema.Attribute.RichText & Schema.Attribute.Required;
+    nombreInterno: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::texto.texto'>;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -875,7 +901,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::texto.texto': ApiTextoTexto;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -886,6 +911,8 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::imagen.imagen': ApiImagenImagen;
+      'api::texto.texto': ApiTextoTexto;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
