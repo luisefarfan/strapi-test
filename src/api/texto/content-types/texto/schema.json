@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "textos",
+  "info": {
+    "singularName": "texto",
+    "pluralName": "textos",
+    "displayName": "Texto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contenido": {
+      "type": "richtext",
+      "required": true
+    },
+    "nombreInterno": {
+      "type": "string"
+    }
+  }
+}
