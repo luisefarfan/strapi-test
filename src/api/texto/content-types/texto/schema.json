@@ -4,7 +4,8 @@
   "info": {
     "singularName": "texto",
     "pluralName": "textos",
-    "displayName": "Texto"
+    "displayName": "Texto",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,6 +18,10 @@
     },
     "nombreInterno": {
       "type": "string"
+    },
+    "ubicacion": {
+      "type": "uid",
+      "required": false
     }
   }
 }

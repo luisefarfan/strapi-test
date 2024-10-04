@@ -517,6 +517,7 @@ export interface ApiTextoTexto extends Struct.CollectionTypeSchema {
     singularName: 'texto';
     pluralName: 'textos';
     displayName: 'Texto';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -524,6 +525,7 @@ export interface ApiTextoTexto extends Struct.CollectionTypeSchema {
   attributes: {
     contenido: Schema.Attribute.RichText & Schema.Attribute.Required;
     nombreInterno: Schema.Attribute.String;
+    ubicacion: Schema.Attribute.UID;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
